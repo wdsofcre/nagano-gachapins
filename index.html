@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
+  <title>長野版 ガチャピンズラリー</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent2:#dbeafe;--done:#16a34a;--danger:#dc2626}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    button,input,select{font:inherit}.app{max-width:980px;margin:auto;padding:env(safe-area-inset-top) 14px calc(80px + env(safe-area-inset-bottom))}
+    header{padding:20px 2px 14px}.eyebrow{font-size:12px;color:var(--muted);letter-spacing:.08em}.title{font-size:25px;font-weight:750;margin:4px 0}.subtitle{color:var(--muted);font-size:14px}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric,.panel{background:var(--card);border:1px solid var(--line);border-radius:18px}.metric{padding:14px}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{display:block;font-size:23px;margin-top:4px}
+    .progress{height:10px;background:#edf0f5;border-radius:999px;overflow:hidden;margin-top:10px}.progress>div{height:100%;background:var(--accent);width:0;transition:.25s}
+    .tabs{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);display:flex;gap:8px;padding:10px 0}.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 16px;flex:1}.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .view{display:none}.view.active{display:block}.panel{padding:14px;margin-top:10px}.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.search,.filter{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;min-width:0}.filter{max-width:145px}
+    #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;height:min(70vh,650px);aspect-ratio:393/608;max-width:100%}.offline-map>img{display:block;width:100%;height:100%;object-fit:contain;filter:saturate(.5)}.pin-layer{position:absolute;inset:0}.map-pin{position:absolute;transform:translate(-50%,-100%);width:25px;height:25px;border:2px solid #fff;border-radius:50% 50% 50% 0;rotate:-45deg;background:var(--accent);box-shadow:0 2px 6px #0005;color:#fff;cursor:pointer}.map-pin.done{background:var(--done)}.map-pin.selected{outline:4px solid rgba(37,99,235,.25);outline-offset:2px}.map-pin span{display:block;rotate:45deg;font-size:12px;line-height:20px;text-align:center}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup small{display:block;color:var(--muted);margin-top:3px}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}.map-popup-action{border:0;border-radius:8px;padding:7px 9px;margin-top:8px;background:var(--accent);color:white;font-size:13px}.map-note{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}.geocode{display:none;padding:10px;border-radius:12px;background:#fffbeb;color:#92400e;margin-bottom:10px;font-size:13px}.geocode.show{display:block}
+    .station-list{display:grid;gap:8px;margin-top:10px}.station{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px}.station.done{border-color:#bbf7d0;background:#f0fdf4}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.station-meta{font-size:12px;color:var(--muted);margin-top:3px}.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.empty{text-align:center;color:var(--muted);padding:30px}
+    .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:9px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.dot.done{background:var(--done)}.dot.todo{background:var(--accent)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
+    footer{font-size:11px;color:var(--muted);line-height:1.5;padding:20px 2px}a{color:var(--accent)}
+    @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr}.map-btn{grid-column:2}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="eyebrow">道の駅 COLLECTION</div>
+    <div class="title">長野版 ガチャピンズラリー</div>
+    <div class="subtitle">取得済みチェックとマップを、iPhone内に保存します。</div>
+  </header>
+
+  <section class="metrics">
+    <div class="metric"><span>取得数</span><strong id="count">0 / 46</strong></div>
+    <div class="metric"><span>収集率</span><strong id="percent">0%</strong></div>
+    <div class="metric"><span>未取得</span><strong id="remaining">46</strong></div>
+  </section>
+  <div class="progress"><div id="bar"></div></div>
+
+  <nav class="tabs" aria-label="表示切替">
+    <button class="tab active" data-view="mapView">マップ</button>
+    <button class="tab" data-view="listView">一覧</button>
+  </nav>
+
+  <section id="mapView" class="view active">
+    <div class="panel">
+      <div id="geoStatus" class="geocode" aria-live="polite"></div>
+      <div class="legend"><span><i class="dot done"></i>取得済み</span><span><i class="dot todo"></i>未取得</span></div>
+      <div id="map">
+        <div class="offline-map" id="offlineMap">
+          <img src="nagano-map.svg" alt="長野県の簡易地図">
+          <div id="pinLayer" class="pin-layer" aria-label="道の駅の位置"></div>
+          <div id="mapPopup" class="map-popup" aria-live="polite">
+            <button id="popupClose" class="map-popup-close" type="button" aria-label="閉じる">×</button>
+            <strong id="popupName"></strong>
+            <small id="popupMeta"></small>
+            <button id="popupAction" class="map-popup-action" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="map-note">地図本体は端末に保存される軽量な簡易地図です。ピンは長野県の輪郭が実際に描かれている範囲へ補正して配置します。駅の位置情報だけを初回に取得し、以後は端末内のデータを使います。地図画像：Wikimedia Commons「Japan Nagano Prefecture location map.svg」CC BY-SA 4.0。</div>
+    </div>
+  </section>
+
+  <section id="listView" class="view">
+    <div class="panel">
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="道の駅名を検索">
+        <select id="filter" class="filter" aria-label="表示条件">
+          <option value="all">すべて</option>
+          <option value="todo">未取得のみ</option>
+          <option value="done">取得済みのみ</option>
+          <option value="kanto">長野（関東）</option>
+          <option value="chubu">長野（中部）</option>
+        </select>
+      </div>
+      <div id="stationList" class="station-list"></div>
+      <div class="actions">
+        <button id="exportBtn" class="secondary">バックアップを書き出す</button>
+        <button id="resetBtn" class="danger">チェックを全てリセット</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    駅一覧は「長野版ガチャピンズラリー 道の駅設置箇所一覧」をもとに作成した個人用試作です。設置状況・営業時間・休館日は公式情報をご確認ください。
+  </footer>
+</div>
+
+<script>
+const stations = [
+  ['kanto','信州新町'],['kanto','信越さかえ'],['kanto','小坂田公園'],['kanto','中条'],['kanto','みまき'],['kanto','白馬'],['kanto','ふるさと豊田'],['kanto','マルメロの駅ながと'],['kanto','ほっとぱ～く・浅科'],['kanto','アルプス安曇野 ほりがねの里'],['kanto','安曇野松川'],['kanto','風穴の里'],['kanto','上田 道と川の駅'],['kanto','信州蔦木宿'],['kanto','しなの'],['kanto','さかきた'],['kanto','ぽかぽかランド美麻'],['kanto','花の駅・千曲川'],['kanto','あおき'],['kanto','おがわ'],['kanto','美ヶ原高原'],['kanto','今井 恵みの里'],['kanto','FARMUS木島平'],['kanto','ヘルシーテラス佐久南'],['kanto','女神の里 たてしな'],['kanto','いくさかの郷'],['kanto','野沢温泉'],['kanto','和田宿ステーション'],['kanto','八千穂高原'],
+  ['chubu','日義木曽駒高原'],['chubu','大桑'],['chubu','奈良井木曽の大橋'],['chubu','信州平谷'],['chubu','信濃路下條'],['chubu','南アルプスむら長谷'],['chubu','木曽ならかわ'],['chubu','三岳'],['chubu','信州新野千石平'],['chubu','遠山郷'],['chubu','木曽福島'],['chubu','木曽川源流の里 きそむら'],['chubu','田切の里'],['chubu','南信州とよおかマルシェ'],['chubu','大芝高原'],['chubu','南信州うるぎ'],['chubu','歌舞伎の里大鹿']
+].map((x,i)=>({id:i+1,region:x[0],name:x[1]}));
+
+const KEY='nagano-gachapins-v1';
+const COORD_KEY='nagano-gachapins-coordinates-v1';
+let checked=JSON.parse(localStorage.getItem(KEY)||'{}');
+let coords=JSON.parse(localStorage.getItem(COORD_KEY)||'{}');
+let selectedStationId=null;
+// 長野県の実際の緯度経度範囲と、SVG内で県域が描かれている範囲を対応させる。
+// 画像全体へ単純配置する旧方式より、東西・南北のずれを大きく減らす。
+const GEO_BOUNDS={west:137.32,east:138.74,south:35.19,north:37.04};
+const IMAGE_BOUNDS={left:75,right:365,top:52,bottom:592,width:393,height:608};
+
+function save(){localStorage.setItem(KEY,JSON.stringify(checked));}
+function updateStats(){const n=stations.filter(s=>checked[s.id]).length,p=Math.round(n/stations.length*100);count.textContent=`${n} / ${stations.length}`;percent.textContent=`${p}%`;remaining.textContent=stations.length-n;bar.style.width=`${p}%`;}
+function regionName(r){return r==='kanto'?'長野（関東）':'長野（中部）'}
+function renderList(){
+  const q=search.value.trim().toLowerCase(),f=filter.value;
+  const list=stations.filter(s=>{if(q&&!s.name.toLowerCase().includes(q))return false;if(f==='todo'&&checked[s.id])return false;if(f==='done'&&!checked[s.id])return false;if((f==='kanto'||f==='chubu')&&s.region!==f)return false;return true;});
+  stationList.innerHTML='';
+  if(!list.length){stationList.innerHTML='<div class="empty">該当する道の駅はありません</div>';return;}
+  list.forEach(s=>{const row=document.createElement('div');row.className='station'+(checked[s.id]?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.className='check';cb.checked=!!checked[s.id];cb.setAttribute('aria-label',s.name+'を取得済みにする');cb.addEventListener('change',()=>{checked[s.id]=cb.checked;save();updateStats();renderList();renderPins();});const text=document.createElement('div');text.innerHTML=`<div class="station-name">${s.name}</div><div class="station-meta">${regionName(s.region)}</div>`;const btn=document.createElement('button');btn.className='map-btn';btn.textContent='地図';btn.addEventListener('click',()=>showStation(s));row.append(cb,text,btn);stationList.appendChild(row);});
+}
+function project(c){
+  const fx=(c.lon-GEO_BOUNDS.west)/(GEO_BOUNDS.east-GEO_BOUNDS.west);
+  const fy=(GEO_BOUNDS.north-c.lat)/(GEO_BOUNDS.north-GEO_BOUNDS.south);
+  const px=IMAGE_BOUNDS.left+fx*(IMAGE_BOUNDS.right-IMAGE_BOUNDS.left);
+  const py=IMAGE_BOUNDS.top+fy*(IMAGE_BOUNDS.bottom-IMAGE_BOUNDS.top);
+  return{
+    x:Math.max(2,Math.min(98,px/IMAGE_BOUNDS.width*100)),
+    y:Math.max(2,Math.min(98,py/IMAGE_BOUNDS.height*100))
+  };
+}
+function closeStationCard(){selectedStationId=null;mapPopup.classList.remove('show','above','below');renderPins();}
+function positionPopup(stationId){
+  const pin=pinLayer.querySelector(`[data-station-id="${stationId}"]`);
+  if(!pin||!mapPopup.classList.contains('show'))return;
+  const mapRect=offlineMap.getBoundingClientRect();
+  const pinRect=pin.getBoundingClientRect();
+  const popupRect=mapPopup.getBoundingClientRect();
+  const gap=14;
+  const padding=6;
+  const centerX=pinRect.left-mapRect.left+pinRect.width/2;
+  const pinCenterY=pinRect.top-mapRect.top+pinRect.height/2;
+  const placeBelow=pinCenterY<mapRect.height/2;
+  let left=centerX-popupRect.width/2;
+  left=Math.max(padding,Math.min(mapRect.width-popupRect.width-padding,left));
+  const top=placeBelow
+    ? pinRect.bottom-mapRect.top+gap
+    : pinRect.top-mapRect.top-popupRect.height-gap;
+  mapPopup.style.left=left+'px';
+  mapPopup.style.top=Math.max(padding,Math.min(mapRect.height-popupRect.height-padding,top))+'px';
+  mapPopup.style.setProperty('--arrow-left',(centerX-left)+'px');
+  mapPopup.classList.toggle('below',placeBelow);
+  mapPopup.classList.toggle('above',!placeBelow);
+}
+function showStationCard(s){
+  const c=coords[s.id];
+  if(!c)return;
+  selectedStationId=s.id;
+  popupName.textContent=s.name;
+  popupMeta.textContent=`${regionName(s.region)}・${checked[s.id]?'取得済み':'未取得'}`;
+  popupAction.textContent=checked[s.id]?'未取得に戻す':'取得済みにする';
+  popupAction.onclick=e=>{e.stopPropagation();checked[s.id]=!checked[s.id];save();updateStats();renderList();showStationCard(s);};
+  mapPopup.classList.remove('above','below');
+  mapPopup.classList.add('show');
+  renderPins();
+  requestAnimationFrame(()=>positionPopup(s.id));
+}
+function renderPins(){pinLayer.innerHTML='';stations.forEach(s=>{const c=coords[s.id];if(!c)return;const p=project(c);const pin=document.createElement('button');pin.type='button';pin.className='map-pin'+(checked[s.id]?' done':'')+(selectedStationId===s.id?' selected':'');pin.dataset.stationId=s.id;pin.style.left=p.x+'%';pin.style.top=p.y+'%';pin.innerHTML=`<span>${checked[s.id]?'✓':''}</span>`;pin.setAttribute('aria-label',`${s.name}、${checked[s.id]?'取得済み':'未取得'}`);pin.addEventListener('click',e=>{e.stopPropagation();showStationCard(s);});pinLayer.appendChild(pin);});}
+function showStation(s){document.querySelector('[data-view="mapView"]').click();if(coords[s.id]){showStationCard(s);setTimeout(()=>offlineMap.scrollIntoView({behavior:'smooth',block:'nearest'}),50);}else alert('この駅の位置情報はまだ取得中です。');}
+async function geocodeMissing(){
+  const missing=stations.filter(s=>!coords[s.id]);if(!missing.length){renderPins();return;}
+  geoStatus.classList.add('show');
+  for(let i=0;i<missing.length;i++){
+    const s=missing[i];geoStatus.textContent=`位置情報を初回準備中… ${i+1} / ${missing.length}（${s.name}）`;
+    try{const q=encodeURIComponent(`道の駅 ${s.name}, 長野県, 日本`);const res=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=jp&q=${q}`,{headers:{'Accept-Language':'ja'}});const data=await res.json();if(data[0]){coords[s.id]={lat:Number(data[0].lat),lon:Number(data[0].lon)};localStorage.setItem(COORD_KEY,JSON.stringify(coords));renderPins();}}catch(e){console.warn(s.name,e);}await new Promise(r=>setTimeout(r,1100));
+  }
+  geoStatus.textContent='位置情報の準備が完了しました。以後、地図本体の通信は不要です。';setTimeout(()=>geoStatus.classList.remove('show'),5000);
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.view).classList.add('active');}));
+window.addEventListener('resize',()=>{if(selectedStationId)requestAnimationFrame(()=>positionPopup(selectedStationId));});offlineMap.addEventListener('click',closeStationCard);mapPopup.addEventListener('click',e=>e.stopPropagation());popupClose.addEventListener('click',closeStationCard);search.addEventListener('input',renderList);filter.addEventListener('change',renderList);
+resetBtn.addEventListener('click',()=>{if(confirm('取得済みチェックをすべて消しますか？')){checked={};save();updateStats();renderList();renderPins();}});
+exportBtn.addEventListener('click',()=>{const data={exportedAt:new Date().toISOString(),checked,coordinates:coords};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nagano-gachapins-backup.json';a.click();URL.revokeObjectURL(a.href);});
+updateStats();renderList();renderPins();geocodeMissing();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>
