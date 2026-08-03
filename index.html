@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
-  <title>長野版 ガチャピンズラリー</title>
+  <title>長野版 ガチャピンズラリー v12</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
@@ -49,7 +49,7 @@
 
   <section id="mapView" class="view active">
     <div class="panel">
-      <div id="geoStatus" class="geocode" aria-live="polite"></div>
+      
       <div class="legend"><span><i class="dot done"></i>取得済み</span><span><i class="dot todo"></i>未取得</span></div>
       <div id="map">
         <div class="offline-map" id="offlineMap">
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="map-note">地図本体は端末に保存される軽量な簡易地図です。ピンは長野県の輪郭が実際に描かれている範囲へ補正して配置します。駅の位置情報だけを初回に取得し、以後は端末内のデータを使います。地図画像：Wikimedia Commons「Japan Nagano Prefecture location map.svg」CC BY-SA 4.0。</div>
+      <div class="map-note">提示いただいたマップを参考に46駅の固定位置を再調整しました。外部の位置情報サービスへ接続せず、iPhoneとパソコンで同じ固定位置に表示します。地図画像：Wikimedia Commons「Japan Nagano Prefecture location map.svg」CC BY-SA 4.0。</div>
     </div>
   </section>
 
@@ -94,19 +94,74 @@
 
 <script>
 const stations = [
-  ['kanto','信州新町'],['kanto','信越さかえ'],['kanto','小坂田公園'],['kanto','中条'],['kanto','みまき'],['kanto','白馬'],['kanto','ふるさと豊田'],['kanto','マルメロの駅ながと'],['kanto','ほっとぱ～く・浅科'],['kanto','アルプス安曇野 ほりがねの里'],['kanto','安曇野松川'],['kanto','風穴の里'],['kanto','上田 道と川の駅'],['kanto','信州蔦木宿'],['kanto','しなの'],['kanto','さかきた'],['kanto','ぽかぽかランド美麻'],['kanto','花の駅・千曲川'],['kanto','あおき'],['kanto','おがわ'],['kanto','美ヶ原高原'],['kanto','今井 恵みの里'],['kanto','FARMUS木島平'],['kanto','ヘルシーテラス佐久南'],['kanto','女神の里 たてしな'],['kanto','いくさかの郷'],['kanto','野沢温泉'],['kanto','和田宿ステーション'],['kanto','八千穂高原'],
-  ['chubu','日義木曽駒高原'],['chubu','大桑'],['chubu','奈良井木曽の大橋'],['chubu','信州平谷'],['chubu','信濃路下條'],['chubu','南アルプスむら長谷'],['chubu','木曽ならかわ'],['chubu','三岳'],['chubu','信州新野千石平'],['chubu','遠山郷'],['chubu','木曽福島'],['chubu','木曽川源流の里 きそむら'],['chubu','田切の里'],['chubu','南信州とよおかマルシェ'],['chubu','大芝高原'],['chubu','南信州うるぎ'],['chubu','歌舞伎の里大鹿']
-].map((x,i)=>({id:i+1,region:x[0],name:x[1]}));
+  {id:1,region:'kanto',number:1,name:"信州新町",x:51.0409,y:29.7710},
+  {id:2,region:'kanto',number:3,name:"信越さかえ",x:77.9709,y:12.4046},
+  {id:3,region:'kanto',number:4,name:"小坂田公園",x:42.9606,y:56.2977},
+  {id:4,region:'kanto',number:6,name:"中条",x:48.9961,y:25.7634},
+  {id:5,region:'kanto',number:7,name:"みまき",x:64.9390,y:45.2290},
+  {id:6,region:'kanto',number:8,name:"白馬",x:35.1780,y:21.1832},
+  {id:7,region:'kanto',number:9,name:"ふるさと豊田",x:65.1546,y:17.5573},
+  {id:8,region:'kanto',number:10,name:"マルメロの駅ながと",x:59.9552,y:49.6183},
+  {id:9,region:'kanto',number:11,name:"ほっとぱ～く・浅科",x:71.0396,y:52.2901},
+  {id:10,region:'kanto',number:12,name:"アルプス安曇野 ほりがねの里",x:47.0689,y:44.0840},
+  {id:11,region:'kanto',number:13,name:"安曇野松川",x:46.5960,y:41.0305},
+  {id:12,region:'kanto',number:14,name:"風穴の里",x:36.8538,y:49.2366},
+  {id:13,region:'kanto',number:16,name:"上田 道と川の駅",x:63.0382,y:36.4504},
+  {id:14,region:'kanto',number:17,name:"信州蔦木宿",x:57.1159,y:64.6947},
+  {id:15,region:'kanto',number:18,name:"しなの",x:57.4695,y:16.9847},
+  {id:16,region:'kanto',number:20,name:"さかきた",x:53.6277,y:37.0229},
+  {id:17,region:'kanto',number:21,name:"ぽかぽかランド美麻",x:38.9085,y:27.2901},
+  {id:18,region:'kanto',number:24,name:"花の駅・千曲川",x:71.5188,y:16.0305},
+  {id:19,region:'kanto',number:25,name:"あおき",x:59.9085,y:40.4580},
+  {id:20,region:'kanto',number:26,name:"おがわ",x:44.4525,y:21.9466},
+  {id:21,region:'kanto',number:27,name:"美ヶ原高原",x:50.0422,y:49.0458},
+  {id:22,region:'kanto',number:28,name:"今井 恵みの里",x:44.8986,y:53.8168},
+  {id:23,region:'kanto',number:29,name:"FARMUS木島平",x:71.2121,y:19.6565},
+  {id:24,region:'kanto',number:30,name:"ヘルシーテラス佐久南",x:71.8178,y:55.1527},
+  {id:25,region:'kanto',number:31,name:"女神の里 たてしな",x:69.5122,y:49.2366},
+  {id:26,region:'kanto',number:32,name:"いくさかの郷",x:41.7313,y:37.7863},
+  {id:27,region:'kanto',number:33,name:"野沢温泉",x:69.8869,y:11.2595},
+  {id:28,region:'kanto',number:35,name:"和田宿ステーション",x:56.4538,y:53.0534},
+  {id:29,region:'kanto',number:36,name:"八千穂高原",x:62.1951,y:55.1527},
+  {id:30,region:'chubu',number:1,name:"日義木曽駒高原",x:39.4146,y:68.5115},
+  {id:31,region:'chubu',number:2,name:"大桑",x:33.2165,y:80.1527},
+  {id:32,region:'chubu',number:3,name:"奈良井木曽の大橋",x:37.8201,y:60.1145},
+  {id:33,region:'chubu',number:4,name:"信州平谷",x:31.8598,y:91.9847},
+  {id:34,region:'chubu',number:5,name:"信濃路下條",x:38.8720,y:88.9313},
+  {id:35,region:'chubu',number:6,name:"南アルプスむら長谷",x:51.4031,y:69.4656},
+  {id:36,region:'chubu',number:7,name:"木曽ならかわ",x:46.4939,y:60.3053},
+  {id:37,region:'chubu',number:8,name:"三岳",x:28.2879,y:70.6107},
+  {id:38,region:'chubu',number:9,name:"信州新野千石平",x:40.5640,y:97.9008},
+  {id:39,region:'chubu',number:11,name:"遠山郷",x:45.3252,y:91.7939},
+  {id:40,region:'chubu',number:12,name:"木曽福島",x:32.8105,y:73.2824},
+  {id:41,region:'chubu',number:13,name:"木曽川源流の里 きそむら",x:32.7744,y:64.8855},
+  {id:42,region:'chubu',number:14,name:"田切の里",x:48.2190,y:75.7634},
+  {id:43,region:'chubu',number:15,name:"南信州とよおかマルシェ",x:43.8486,y:79.1985},
+  {id:44,region:'chubu',number:16,name:"大芝高原",x:43.2957,y:64.6947},
+  {id:45,region:'chubu',number:17,name:"南信州うるぎ",x:35.0183,y:95.0382},
+  {id:46,region:'chubu',number:18,name:"歌舞伎の里大鹿",x:51.8021,y:78.2443}
+];
 
 const KEY='nagano-gachapins-v1';
-const COORD_KEY='nagano-gachapins-coordinates-v1';
 let checked=JSON.parse(localStorage.getItem(KEY)||'{}');
-let coords=JSON.parse(localStorage.getItem(COORD_KEY)||'{}');
 let selectedStationId=null;
-// 長野県の実際の緯度経度範囲と、SVG内で県域が描かれている範囲を対応させる。
-// 画像全体へ単純配置する旧方式より、東西・南北のずれを大きく減らす。
-const GEO_BOUNDS={west:137.32,east:138.74,south:35.19,north:37.04};
-const IMAGE_BOUNDS={left:75,right:365,top:52,bottom:592,width:393,height:608};
+
+const count=document.getElementById('count');
+const percent=document.getElementById('percent');
+const remaining=document.getElementById('remaining');
+const bar=document.getElementById('bar');
+const search=document.getElementById('search');
+const filter=document.getElementById('filter');
+const stationList=document.getElementById('stationList');
+const offlineMap=document.getElementById('offlineMap');
+const pinLayer=document.getElementById('pinLayer');
+const mapPopup=document.getElementById('mapPopup');
+const popupName=document.getElementById('popupName');
+const popupMeta=document.getElementById('popupMeta');
+const popupAction=document.getElementById('popupAction');
+const popupClose=document.getElementById('popupClose');
+const resetBtn=document.getElementById('resetBtn');
+const exportBtn=document.getElementById('exportBtn');
 
 function save(){localStorage.setItem(KEY,JSON.stringify(checked));}
 function updateStats(){const n=stations.filter(s=>checked[s.id]).length,p=Math.round(n/stations.length*100);count.textContent=`${n} / ${stations.length}`;percent.textContent=`${p}%`;remaining.textContent=stations.length-n;bar.style.width=`${p}%`;}
@@ -118,16 +173,7 @@ function renderList(){
   if(!list.length){stationList.innerHTML='<div class="empty">該当する道の駅はありません</div>';return;}
   list.forEach(s=>{const row=document.createElement('div');row.className='station'+(checked[s.id]?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.className='check';cb.checked=!!checked[s.id];cb.setAttribute('aria-label',s.name+'を取得済みにする');cb.addEventListener('change',()=>{checked[s.id]=cb.checked;save();updateStats();renderList();renderPins();});const text=document.createElement('div');text.innerHTML=`<div class="station-name">${s.name}</div><div class="station-meta">${regionName(s.region)}</div>`;const btn=document.createElement('button');btn.className='map-btn';btn.textContent='地図';btn.addEventListener('click',()=>showStation(s));row.append(cb,text,btn);stationList.appendChild(row);});
 }
-function project(c){
-  const fx=(c.lon-GEO_BOUNDS.west)/(GEO_BOUNDS.east-GEO_BOUNDS.west);
-  const fy=(GEO_BOUNDS.north-c.lat)/(GEO_BOUNDS.north-GEO_BOUNDS.south);
-  const px=IMAGE_BOUNDS.left+fx*(IMAGE_BOUNDS.right-IMAGE_BOUNDS.left);
-  const py=IMAGE_BOUNDS.top+fy*(IMAGE_BOUNDS.bottom-IMAGE_BOUNDS.top);
-  return{
-    x:Math.max(2,Math.min(98,px/IMAGE_BOUNDS.width*100)),
-    y:Math.max(2,Math.min(98,py/IMAGE_BOUNDS.height*100))
-  };
-}
+
 function closeStationCard(){selectedStationId=null;mapPopup.classList.remove('show','above','below');renderPins();}
 function positionPopup(stationId){
   const pin=pinLayer.querySelector(`[data-station-id="${stationId}"]`);
@@ -152,8 +198,6 @@ function positionPopup(stationId){
   mapPopup.classList.toggle('above',!placeBelow);
 }
 function showStationCard(s){
-  const c=coords[s.id];
-  if(!c)return;
   selectedStationId=s.id;
   popupName.textContent=s.name;
   popupMeta.textContent=`${regionName(s.region)}・${checked[s.id]?'取得済み':'未取得'}`;
@@ -164,23 +208,39 @@ function showStationCard(s){
   renderPins();
   requestAnimationFrame(()=>positionPopup(s.id));
 }
-function renderPins(){pinLayer.innerHTML='';stations.forEach(s=>{const c=coords[s.id];if(!c)return;const p=project(c);const pin=document.createElement('button');pin.type='button';pin.className='map-pin'+(checked[s.id]?' done':'')+(selectedStationId===s.id?' selected':'');pin.dataset.stationId=s.id;pin.style.left=p.x+'%';pin.style.top=p.y+'%';pin.innerHTML=`<span>${checked[s.id]?'✓':''}</span>`;pin.setAttribute('aria-label',`${s.name}、${checked[s.id]?'取得済み':'未取得'}`);pin.addEventListener('click',e=>{e.stopPropagation();showStationCard(s);});pinLayer.appendChild(pin);});}
-function showStation(s){document.querySelector('[data-view="mapView"]').click();if(coords[s.id]){showStationCard(s);setTimeout(()=>offlineMap.scrollIntoView({behavior:'smooth',block:'nearest'}),50);}else alert('この駅の位置情報はまだ取得中です。');}
-async function geocodeMissing(){
-  const missing=stations.filter(s=>!coords[s.id]);if(!missing.length){renderPins();return;}
-  geoStatus.classList.add('show');
-  for(let i=0;i<missing.length;i++){
-    const s=missing[i];geoStatus.textContent=`位置情報を初回準備中… ${i+1} / ${missing.length}（${s.name}）`;
-    try{const q=encodeURIComponent(`道の駅 ${s.name}, 長野県, 日本`);const res=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=jp&q=${q}`,{headers:{'Accept-Language':'ja'}});const data=await res.json();if(data[0]){coords[s.id]={lat:Number(data[0].lat),lon:Number(data[0].lon)};localStorage.setItem(COORD_KEY,JSON.stringify(coords));renderPins();}}catch(e){console.warn(s.name,e);}await new Promise(r=>setTimeout(r,1100));
-  }
-  geoStatus.textContent='位置情報の準備が完了しました。以後、地図本体の通信は不要です。';setTimeout(()=>geoStatus.classList.remove('show'),5000);
+function renderPins(){
+  pinLayer.innerHTML='';
+  stations.forEach(s=>{
+    const p={x:s.x,y:s.y};
+    const pin=document.createElement('button');
+    pin.type='button';
+    pin.className='map-pin'+(checked[s.id]?' done':'')+(selectedStationId===s.id?' selected':'');
+    pin.dataset.stationId=s.id;
+    pin.style.left=p.x+'%';pin.style.top=p.y+'%';
+    pin.innerHTML=`<span>${checked[s.id]?'✓':''}</span>`;
+    pin.setAttribute('aria-label',`${s.name}、${checked[s.id]?'取得済み':'未取得'}`);
+    pin.addEventListener('click',e=>{
+      e.stopPropagation();
+      showStationCard(s);
+    });
+    pinLayer.appendChild(pin);
+  });
 }
+function showStation(s){document.querySelector('[data-view="mapView"]').click();showStationCard(s);setTimeout(()=>offlineMap.scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
 
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.view).classList.add('active');}));
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  closeStationCard();
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById(t.dataset.view).classList.add('active');
+  renderPins();
+}));
 window.addEventListener('resize',()=>{if(selectedStationId)requestAnimationFrame(()=>positionPopup(selectedStationId));});offlineMap.addEventListener('click',closeStationCard);mapPopup.addEventListener('click',e=>e.stopPropagation());popupClose.addEventListener('click',closeStationCard);search.addEventListener('input',renderList);filter.addEventListener('change',renderList);
 resetBtn.addEventListener('click',()=>{if(confirm('取得済みチェックをすべて消しますか？')){checked={};save();updateStats();renderList();renderPins();}});
-exportBtn.addEventListener('click',()=>{const data={exportedAt:new Date().toISOString(),checked,coordinates:coords};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nagano-gachapins-backup.json';a.click();URL.revokeObjectURL(a.href);});
-updateStats();renderList();renderPins();geocodeMissing();
+exportBtn.addEventListener('click',()=>{const data={exportedAt:new Date().toISOString(),checked};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nagano-gachapins-backup.json';a.click();URL.revokeObjectURL(a.href);});
+updateStats();renderList();renderPins();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
 </body>
