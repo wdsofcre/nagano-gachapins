@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
-  <title>長野版 ガチャピンズラリー v12</title>
+  <title>長野版 ガチャピンズラリー v13</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
@@ -19,7 +19,7 @@
     .progress{height:10px;background:#edf0f5;border-radius:999px;overflow:hidden;margin-top:10px}.progress>div{height:100%;background:var(--accent);width:0;transition:.25s}
     .tabs{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);display:flex;gap:8px;padding:10px 0}.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 16px;flex:1}.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
     .view{display:none}.view.active{display:block}.panel{padding:14px;margin-top:10px}.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.search,.filter{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;min-width:0}.filter{max-width:145px}
-    #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:429/650;max-width:100%}.offline-map>img{display:block;width:100%;height:100%;filter:saturate(.5)}.pin-layer{position:absolute;inset:0}.map-pin{position:absolute;transform:translate(-50%,-100%);width:25px;height:25px;border:2px solid #fff;border-radius:50% 50% 50% 0;rotate:-45deg;background:var(--accent);box-shadow:0 2px 6px #0005;color:#fff;cursor:pointer}.map-pin.done{background:var(--done)}.map-pin.selected{outline:4px solid rgba(37,99,235,.25);outline-offset:2px}.map-pin span{display:block;rotate:45deg;font-size:12px;line-height:20px;text-align:center}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup small{display:block;color:var(--muted);margin-top:3px}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}.map-popup-action{border:0;border-radius:8px;padding:7px 9px;margin-top:8px;background:var(--accent);color:white;font-size:13px}.map-note{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}.geocode{display:none;padding:10px;border-radius:12px;background:#fffbeb;color:#92400e;margin-bottom:10px;font-size:13px}.geocode.show{display:block}
+    #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:393/608;max-width:100%}.map-svg{display:block;width:100%;height:100%;filter:saturate(.5);overflow:visible}.svg-pin{cursor:pointer;outline:none}.svg-pin .pin-shape{fill:var(--accent);stroke:#fff;stroke-width:2.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.svg-pin.done .pin-shape{fill:var(--done)}.svg-pin.selected .pin-shape{stroke:#93c5fd;stroke-width:5}.svg-pin .pin-check{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}.svg-pin:focus-visible .pin-shape{stroke:#111827;stroke-width:4}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup small{display:block;color:var(--muted);margin-top:3px}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}.map-popup-action{border:0;border-radius:8px;padding:7px 9px;margin-top:8px;background:var(--accent);color:white;font-size:13px}.map-note{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}.geocode{display:none;padding:10px;border-radius:12px;background:#fffbeb;color:#92400e;margin-bottom:10px;font-size:13px}.geocode.show{display:block}
     .station-list{display:grid;gap:8px;margin-top:10px}.station{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px}.station.done{border-color:#bbf7d0;background:#f0fdf4}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.station-meta{font-size:12px;color:var(--muted);margin-top:3px}.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.empty{text-align:center;color:var(--muted);padding:30px}
     .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:9px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.dot.done{background:var(--done)}.dot.todo{background:var(--accent)}
     .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
@@ -53,8 +53,10 @@
       <div class="legend"><span><i class="dot done"></i>取得済み</span><span><i class="dot todo"></i>未取得</span></div>
       <div id="map">
         <div class="offline-map" id="offlineMap">
-          <img src="nagano-map.svg" alt="長野県の簡易地図">
-          <div id="pinLayer" class="pin-layer" aria-label="道の駅の位置"></div>
+          <svg id="mapSvg" class="map-svg" viewBox="0 0 393 608" role="img" aria-label="長野県の簡易地図と道の駅の位置" preserveAspectRatio="xMidYMid meet">
+            <image href="nagano-map.svg" x="0" y="0" width="393" height="608" preserveAspectRatio="none"></image>
+            <g id="pinLayer" aria-label="道の駅の位置"></g>
+          </svg>
           <div id="mapPopup" class="map-popup" aria-live="polite">
             <button id="popupClose" class="map-popup-close" type="button" aria-label="閉じる">×</button>
             <strong id="popupName"></strong>
@@ -63,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="map-note">提示いただいたマップを参考に46駅の固定位置を再調整しました。外部の位置情報サービスへ接続せず、iPhoneとパソコンで同じ固定位置に表示します。地図画像：Wikimedia Commons「Japan Nagano Prefecture location map.svg」CC BY-SA 4.0。</div>
+      <div class="map-note">46駅のピンを地図と同じSVG座標系へ固定しました。外部の位置情報サービスへ接続せず、iPhoneとパソコンで同じ位置関係に表示します。地図画像：Wikimedia Commons「Japan Nagano Prefecture location map.svg」CC BY-SA 4.0。</div>
     </div>
   </section>
 
@@ -155,6 +157,7 @@ const filter=document.getElementById('filter');
 const stationList=document.getElementById('stationList');
 const offlineMap=document.getElementById('offlineMap');
 const pinLayer=document.getElementById('pinLayer');
+const mapSvg=document.getElementById('mapSvg');
 const mapPopup=document.getElementById('mapPopup');
 const popupName=document.getElementById('popupName');
 const popupMeta=document.getElementById('popupMeta');
@@ -210,19 +213,37 @@ function showStationCard(s){
 }
 function renderPins(){
   pinLayer.innerHTML='';
+  const NS='http://www.w3.org/2000/svg';
   stations.forEach(s=>{
-    const p={x:s.x,y:s.y};
-    const pin=document.createElement('button');
-    pin.type='button';
-    pin.className='map-pin'+(checked[s.id]?' done':'')+(selectedStationId===s.id?' selected':'');
+    const x=s.x/100*393;
+    const y=s.y/100*608;
+    const pin=document.createElementNS(NS,'g');
+    pin.classList.add('svg-pin');
+    if(checked[s.id])pin.classList.add('done');
+    if(selectedStationId===s.id)pin.classList.add('selected');
     pin.dataset.stationId=s.id;
-    pin.style.left=p.x+'%';pin.style.top=p.y+'%';
-    pin.innerHTML=`<span>${checked[s.id]?'✓':''}</span>`;
+    pin.setAttribute('transform',`translate(${x} ${y}) scale(.84)`);
+    pin.setAttribute('role','button');
+    pin.setAttribute('tabindex','0');
     pin.setAttribute('aria-label',`${s.name}、${checked[s.id]?'取得済み':'未取得'}`);
-    pin.addEventListener('click',e=>{
-      e.stopPropagation();
-      showStationCard(s);
-    });
+
+    const shape=document.createElementNS(NS,'path');
+    shape.setAttribute('class','pin-shape');
+    shape.setAttribute('d','M0 0 C-8 -7 -13 -17 -13 -27 A13 13 0 1 1 13 -27 C13 -17 8 -7 0 0 Z');
+    pin.appendChild(shape);
+
+    if(checked[s.id]){
+      const check=document.createElementNS(NS,'text');
+      check.setAttribute('class','pin-check');
+      check.setAttribute('x','0');
+      check.setAttribute('y','-22');
+      check.textContent='✓';
+      pin.appendChild(check);
+    }
+
+    const open=e=>{e.preventDefault();e.stopPropagation();showStationCard(s);};
+    pin.addEventListener('click',open);
+    pin.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ' )open(e);});
     pinLayer.appendChild(pin);
   });
 }
