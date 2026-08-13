@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
-  <title>長野版 ガチャピンズラリー v1.1</title>
+  <title>長野版 ガチャピンズラリー v1.2</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
@@ -20,10 +20,10 @@
     .tabs{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);display:flex;gap:8px;padding:10px 0}.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 16px;flex:1}.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
     .view{display:none}.view.active{display:block}.panel{padding:14px;margin-top:10px}.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.search,.filter{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;min-width:0}.filter{max-width:145px}
     #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:393/608;max-width:100%}.map-svg{display:block;width:100%;height:100%;overflow:visible}.map-base{filter:saturate(.5)}.svg-pin{cursor:pointer;outline:none}.svg-pin .pin-shape{fill:var(--accent);stroke:#fff;stroke-width:2.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.svg-pin.done .pin-shape{fill:var(--done)}.svg-pin.selected .pin-shape{stroke:#93c5fd;stroke-width:5}.svg-pin .pin-check{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}.svg-pin:focus-visible .pin-shape{stroke:#111827;stroke-width:4}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}
-    .station-list{display:grid;gap:8px;margin-top:10px}.station-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.station-card.done{border-color:#bbf7d0;background:#f0fdf4}.station{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:12px}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.details-toggle,.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.details-toggle{min-width:40px}.station-details{display:none;border-top:1px solid var(--line);padding:12px;background:#fff}.station-card.open .station-details{display:block}.detail-grid{display:grid;gap:12px}.detail-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.memo{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}.photo-box{display:grid;gap:8px}.photo-preview{display:none;width:100%;max-height:240px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#f3f4f6}.photo-preview.show{display:block}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.photo-btn,.photo-delete,.google-btn{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--text);text-decoration:none}.google-btn{background:var(--accent);border-color:var(--accent);color:#fff}.photo-delete{color:var(--danger)}.photo-input{display:none}.save-status{font-size:12px;color:var(--muted);min-height:1em}.empty{text-align:center;color:var(--muted);padding:30px}
+    .station-list{display:grid;gap:8px;margin-top:10px}.station-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.station-card.done{border-color:#bbf7d0;background:#f0fdf4}.station{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:12px}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.details-toggle,.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.details-toggle{min-width:40px}.station-details{display:none;border-top:1px solid var(--line);padding:12px;background:#fff}.station-card.open .station-details{display:block}.detail-grid{display:grid;gap:12px}.detail-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.memo{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}.photo-box{display:grid;gap:8px}.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo-slot{display:grid;gap:7px}.photo-thumb-wrap{aspect-ratio:4/3;border:1px dashed var(--line);border-radius:12px;background:#f3f4f6;overflow:hidden;display:flex;align-items:center;justify-content:center}.photo-preview{display:none;width:100%;height:100%;object-fit:cover}.photo-preview.show{display:block}.photo-empty{font-size:12px;color:var(--muted)}.photo-slot.has-photo .photo-empty{display:none}.photo-slot-actions{display:flex;gap:6px;flex-wrap:wrap}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.photo-btn,.photo-delete,.photo-rotate,.google-btn{border:1px solid var(--line);border-radius:10px;padding:8px 9px;background:#fff;color:var(--text);text-decoration:none;font-size:13px}.google-btn{background:var(--accent);border-color:var(--accent);color:#fff}.photo-delete{color:var(--danger)}.photo-rotate{color:#1d4ed8}.photo-input{display:none}.save-status{font-size:12px;color:var(--muted);min-height:1em}.empty{text-align:center;color:var(--muted);padding:30px}
         .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
     footer{font-size:11px;color:var(--muted);line-height:1.5;padding:20px 2px}a{color:var(--accent)}
-    @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr auto}.details-toggle{display:none}.map-btn{padding:8px 9px}.station-name{cursor:pointer}.detail-actions{display:grid}.detail-actions>*{text-align:center}}
+    @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr auto}.details-toggle{display:none}.map-btn{padding:8px 9px}.station-name{cursor:pointer}.detail-actions{display:grid}.detail-actions>*{text-align:center}.photo-slot-actions{display:grid;grid-template-columns:repeat(2,1fr)}.photo-slot-actions .photo-btn{grid-column:1/-1;text-align:center}}
   </style>
 </head>
 <body>
@@ -206,11 +206,21 @@ function renderList(){
     details.innerHTML=`
       <div class="detail-grid">
         <div class="photo-box">
-          <span class="detail-label">写真</span>
-          <img class="photo-preview" alt="${s.name}の登録写真">
-          <div class="detail-actions">
-            <label class="photo-btn">写真を追加・変更<input class="photo-input" type="file" accept="image/*"></label>
-            <button class="photo-delete" type="button">写真を削除</button>
+          <span class="detail-label">写真（2枚まで）</span>
+          <div class="photo-grid">
+            ${[1,2].map(slot=>`
+              <div class="photo-slot" data-photo-slot="${slot}">
+                <div class="photo-thumb-wrap">
+                  <span class="photo-empty">写真${slot}</span>
+                  <img class="photo-preview" alt="${s.name}の登録写真${slot}">
+                </div>
+                <div class="photo-slot-actions">
+                  <label class="photo-btn">追加・変更<input class="photo-input" type="file" accept="image/*"></label>
+                  <button class="photo-rotate left" type="button" title="左へ90度回転">↺</button>
+                  <button class="photo-rotate right" type="button" title="右へ90度回転">↻</button>
+                  <button class="photo-delete" type="button">削除</button>
+                </div>
+              </div>`).join('')}
           </div>
         </div>
         <label>
@@ -238,45 +248,66 @@ function renderList(){
     const google=details.querySelector('.google-btn');
     google.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('道の駅 '+s.name+' 長野県');
 
-    const preview=details.querySelector('.photo-preview');
-    const photoInput=details.querySelector('.photo-input');
-    const photoDelete=details.querySelector('.photo-delete');
+    details.querySelectorAll('.photo-slot').forEach(slotEl=>{
+      const slot=Number(slotEl.dataset.photoSlot);
+      const preview=slotEl.querySelector('.photo-preview');
+      const photoInput=slotEl.querySelector('.photo-input');
+      const photoDelete=slotEl.querySelector('.photo-delete');
+      const rotateLeft=slotEl.querySelector('.photo-rotate.left');
+      const rotateRight=slotEl.querySelector('.photo-rotate.right');
 
-    loadPhoto(s.id).then(blob=>{
-      if(blob){
-        const url=URL.createObjectURL(blob);
-        preview.src=url;
-        preview.classList.add('show');
-        preview.dataset.objectUrl=url;
-        photoDelete.hidden=false;
-      }else{
-        photoDelete.hidden=true;
-      }
-    }).catch(()=>{photoDelete.hidden=true;});
-
-    photoInput.addEventListener('change',async()=>{
-      const file=photoInput.files&&photoInput.files[0];
-      if(!file)return;
-      try{
-        const blob=await resizeImage(file,1600,0.82);
-        await savePhoto(s.id,blob);
+      const setPhotoUI=blob=>{
         if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);
-        const url=URL.createObjectURL(blob);
-        preview.src=url;
-        preview.dataset.objectUrl=url;
-        preview.classList.add('show');
-        photoDelete.hidden=false;
-      }catch(err){alert('写真を保存できませんでした。');}
-      photoInput.value='';
-    });
+        if(blob){
+          const url=URL.createObjectURL(blob);
+          preview.src=url;
+          preview.dataset.objectUrl=url;
+          preview.classList.add('show');
+          slotEl.classList.add('has-photo');
+          photoDelete.hidden=false;
+          rotateLeft.hidden=false;
+          rotateRight.hidden=false;
+        }else{
+          preview.removeAttribute('src');
+          delete preview.dataset.objectUrl;
+          preview.classList.remove('show');
+          slotEl.classList.remove('has-photo');
+          photoDelete.hidden=true;
+          rotateLeft.hidden=true;
+          rotateRight.hidden=true;
+        }
+      };
 
-    photoDelete.addEventListener('click',async()=>{
-      if(!confirm('この写真を削除しますか？'))return;
-      await deletePhoto(s.id);
-      if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);
-      preview.removeAttribute('src');
-      preview.classList.remove('show');
-      photoDelete.hidden=true;
+      loadPhoto(s.id,slot).then(setPhotoUI).catch(()=>setPhotoUI(null));
+
+      photoInput.addEventListener('change',async()=>{
+        const file=photoInput.files&&photoInput.files[0];
+        if(!file)return;
+        try{
+          const blob=await resizeImage(file,1200,0.68);
+          await savePhoto(s.id,slot,blob);
+          setPhotoUI(blob);
+        }catch(err){alert('写真を保存できませんでした。');}
+        photoInput.value='';
+      });
+
+      const rotate=async direction=>{
+        try{
+          const blob=await loadPhoto(s.id,slot);
+          if(!blob)return;
+          const rotated=await rotateImage(blob,direction);
+          await savePhoto(s.id,slot,rotated);
+          setPhotoUI(rotated);
+        }catch(err){alert('写真を回転できませんでした。');}
+      };
+      rotateLeft.addEventListener('click',()=>rotate(-90));
+      rotateRight.addEventListener('click',()=>rotate(90));
+
+      photoDelete.addEventListener('click',async()=>{
+        if(!confirm('この写真を削除しますか？'))return;
+        await deletePhoto(s.id,slot);
+        setPhotoUI(null);
+      });
     });
 
     card.append(row,details);
@@ -294,23 +325,34 @@ function openPhotoDB(){
     req.onerror=()=>reject(req.error);
   });
 }
-async function savePhoto(id,blob){
+function photoKey(id,slot){return `${id}:${slot}`;}
+async function savePhoto(id,slot,blob){
   const db=await openPhotoDB();
-  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').put(blob,String(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
+  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').put(blob,photoKey(id,slot));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
   db.close();
 }
-async function loadPhoto(id){
+async function loadPhoto(id,slot){
   const db=await openPhotoDB();
-  const value=await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readonly');const req=tx.objectStore('photos').get(String(id));req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});
+  const storeKey=photoKey(id,slot);
+  const value=await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readonly');const store=tx.objectStore('photos');const req=store.get(storeKey);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});
+  if(value){db.close();return value;}
+  if(slot===1){
+    const legacy=await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readonly');const req=tx.objectStore('photos').get(String(id));req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});
+    if(legacy){
+      await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');const store=tx.objectStore('photos');store.put(legacy,storeKey);store.delete(String(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
+      db.close();
+      return legacy;
+    }
+  }
   db.close();
-  return value;
+  return null;
 }
-async function deletePhoto(id){
+async function deletePhoto(id,slot){
   const db=await openPhotoDB();
-  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(String(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
+  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(photoKey(id,slot));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
   db.close();
 }
-function resizeImage(file,maxSize=1600,quality=.82){
+function resizeImage(file,maxSize=1200,quality=.68){
   return new Promise((resolve,reject)=>{
     const img=new Image();
     const url=URL.createObjectURL(file);
@@ -320,8 +362,31 @@ function resizeImage(file,maxSize=1600,quality=.82){
         const w=Math.max(1,Math.round(img.naturalWidth*scale));
         const h=Math.max(1,Math.round(img.naturalHeight*scale));
         const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
-        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        const ctx=canvas.getContext('2d');
+        ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+        ctx.drawImage(img,0,0,w,h);
         canvas.toBlob(blob=>{URL.revokeObjectURL(url);blob?resolve(blob):reject(new Error('画像変換に失敗'));},'image/jpeg',quality);
+      }catch(e){URL.revokeObjectURL(url);reject(e);}
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('画像を読み込めません'));};
+    img.src=url;
+  });
+}
+function rotateImage(blob,degrees){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    const url=URL.createObjectURL(blob);
+    img.onload=()=>{
+      try{
+        const quarter=Math.abs(degrees)%180===90;
+        const canvas=document.createElement('canvas');
+        canvas.width=quarter?img.naturalHeight:img.naturalWidth;
+        canvas.height=quarter?img.naturalWidth:img.naturalHeight;
+        const ctx=canvas.getContext('2d');
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.rotate(degrees*Math.PI/180);
+        ctx.drawImage(img,-img.naturalWidth/2,-img.naturalHeight/2);
+        canvas.toBlob(out=>{URL.revokeObjectURL(url);out?resolve(out):reject(new Error('画像回転に失敗'));},'image/jpeg',0.68);
       }catch(e){URL.revokeObjectURL(url);reject(e);}
     };
     img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('画像を読み込めません'));};
