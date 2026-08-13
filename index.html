@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
-  <title>長野版 ガチャピンズラリー v1.3</title>
+  <title>長野版 ガチャピンズラリー v1.3.3.2</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
@@ -20,7 +20,7 @@
     .tabs{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);display:flex;gap:8px;padding:10px 0}.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 16px;flex:1}.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
     .view{display:none}.view.active{display:block}.panel{padding:14px;margin-top:10px}.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.search,.filter{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;min-width:0}.filter{max-width:145px}
     #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:393/608;max-width:100%}.map-svg{display:block;width:100%;height:100%;overflow:visible}.map-base{filter:saturate(.5)}.svg-pin{cursor:pointer;outline:none}.svg-pin .pin-shape{fill:var(--accent);stroke:#fff;stroke-width:2.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.svg-pin.done .pin-shape{fill:var(--done)}.svg-pin.selected .pin-shape{stroke:#93c5fd;stroke-width:5}.svg-pin .pin-check{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}.svg-pin:focus-visible .pin-shape{stroke:#111827;stroke-width:4}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}
-    .station-list{display:grid;gap:8px;margin-top:10px}.station-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.station-card.done{border-color:#bbf7d0;background:#f0fdf4}.station{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:12px}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.details-toggle,.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.details-toggle{min-width:40px}.station-details{display:none;border-top:1px solid var(--line);padding:12px;background:#fff}.station-card.open .station-details{display:block}.detail-grid{display:grid;gap:12px}.detail-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.memo{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}.photo-box{display:grid;gap:8px}.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo-slot{display:grid;gap:7px}.photo-thumb-wrap{appearance:none;width:100%;padding:0;aspect-ratio:4/3;border:1px dashed var(--line);border-radius:12px;background:#f3f4f6;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;color:inherit}.photo-preview{display:none;width:100%;height:100%;object-fit:cover}.photo-preview.show{display:block}.photo-empty{font-size:12px;color:var(--muted)}.photo-slot.has-photo .photo-empty{display:none}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.photo-btn,.photo-delete,.photo-rotate,.google-btn{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--text);text-decoration:none;font-size:13px}.google-btn{background:var(--accent);border-color:var(--accent);color:#fff}.photo-delete{color:var(--danger)}.photo-rotate{color:#1d4ed8}.photo-input{display:none}.photo-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.55)}.photo-modal.show{display:flex}.photo-modal-card{position:relative;width:min(92vw,480px);max-height:90vh;overflow:auto;background:#fff;border-radius:18px;padding:14px;box-shadow:0 18px 55px rgba(0,0,0,.35)}.photo-modal-close{position:absolute;right:8px;top:8px;z-index:2;border:0;background:rgba(255,255,255,.92);border-radius:999px;width:34px;height:34px;font-size:22px;line-height:1;color:var(--muted)}.photo-modal-title{font-weight:700;padding:3px 42px 10px 2px}.photo-modal-image-wrap{aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#f3f4f6;display:flex;align-items:center;justify-content:center}.photo-modal-image{display:none;width:100%;height:100%;object-fit:contain;background:#111}.photo-modal-image.show{display:block}.photo-modal-empty{color:var(--muted);font-size:14px}.photo-modal.has-photo .photo-modal-empty{display:none}.photo-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.photo-modal-actions .photo-btn{grid-column:1/-1;text-align:center;background:var(--accent);border-color:var(--accent);color:#fff}.photo-modal-actions .photo-delete{grid-column:1/-1}.photo-modal:not(.has-photo) .photo-rotate,.photo-modal:not(.has-photo) .photo-delete{display:none}.save-status{font-size:12px;color:var(--muted);min-height:1em}.empty{text-align:center;color:var(--muted);padding:30px}
+    .station-list{display:grid;gap:8px;margin-top:10px}.station-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.station-card.done{border-color:#bbf7d0;background:#f0fdf4}.station{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:12px}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.details-toggle,.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.details-toggle{min-width:40px}.station-details{display:none;border-top:1px solid var(--line);padding:12px;background:#fff}.station-card.open .station-details{display:block}.detail-grid{display:grid;gap:12px}.detail-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.memo{width:100%;height:42px;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}.photo-box{display:grid;gap:8px}.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo-slot{display:grid;gap:7px}.photo-thumb-wrap{appearance:none;width:100%;padding:0;aspect-ratio:4/3;border:1px dashed var(--line);border-radius:12px;background:#f3f4f6;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;color:inherit}.photo-preview{display:none;width:100%;height:100%;object-fit:cover}.photo-preview.show{display:block}.photo-empty{font-size:12px;color:var(--muted)}.photo-slot.has-photo .photo-empty{display:none}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.photo-btn,.photo-delete,.photo-rotate,.google-btn{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--text);text-decoration:none;font-size:13px}.google-btn{background:var(--accent);border-color:var(--accent);color:#fff}.photo-delete{color:var(--danger)}.photo-rotate{color:#1d4ed8}.photo-input{display:none}.photo-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.55)}.photo-modal.show{display:flex}.photo-modal-card{position:relative;width:min(88vw,360px);background:#fff;border-radius:18px;padding:52px 14px 14px;box-shadow:0 18px 55px rgba(0,0,0,.35)}.photo-modal-close{position:absolute;right:8px;top:8px;z-index:2;border:0;background:rgba(255,255,255,.92);border-radius:999px;width:34px;height:34px;font-size:22px;line-height:1;color:var(--muted)}.photo-modal.has-photo .photo-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.photo-modal-actions .photo-btn{grid-column:1/-1;text-align:center;background:var(--accent);border-color:var(--accent);color:#fff}.photo-modal-actions .photo-delete{grid-column:1/-1}.photo-modal:not(.has-photo) .photo-rotate,.photo-modal:not(.has-photo) .photo-delete{display:none}.save-status{font-size:12px;color:var(--muted);min-height:1em}.empty{text-align:center;color:var(--muted);padding:30px}
         .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
     footer{font-size:11px;color:var(--muted);line-height:1.5;padding:20px 2px}a{color:var(--accent)}
     @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr auto}.details-toggle{display:none}.map-btn{padding:8px 9px}.station-name{cursor:pointer}.detail-actions{display:grid}.detail-actions>*{text-align:center}}
@@ -80,6 +80,19 @@
     </div>
   </section>
 
+</div>
+
+
+<div id="photoModal" class="photo-modal" aria-hidden="true">
+  <div class="photo-modal-card" role="dialog" aria-modal="true" aria-label="写真操作">
+    <button id="photoModalClose" class="photo-modal-close" type="button" aria-label="閉じる">×</button>
+    <div class="photo-modal-actions">
+      <label class="photo-btn">追加・変更<input id="photoModalInput" class="photo-input" type="file" accept="image/*"></label>
+      <button id="photoRotateLeft" class="photo-rotate" type="button">↺ 左90°</button>
+      <button id="photoRotateRight" class="photo-rotate" type="button">右90° ↻</button>
+      <button id="photoModalDelete" class="photo-delete" type="button">削除</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -156,15 +169,12 @@ const resetBtn=document.getElementById('resetBtn');
 const exportBtn=document.getElementById('exportBtn');
 const photoModal=document.getElementById('photoModal');
 const photoModalClose=document.getElementById('photoModalClose');
-const photoModalTitle=document.getElementById('photoModalTitle');
-const photoModalImage=document.getElementById('photoModalImage');
 const photoModalInput=document.getElementById('photoModalInput');
 const photoRotateLeft=document.getElementById('photoRotateLeft');
 const photoRotateRight=document.getElementById('photoRotateRight');
 const photoModalDelete=document.getElementById('photoModalDelete');
 let activePhotoStation=null;
 let activePhotoSlot=null;
-let activePhotoObjectUrl=null;
 
 function save(){localStorage.setItem(KEY,JSON.stringify(checked));}
 function saveMemos(){localStorage.setItem(MEMO_KEY,JSON.stringify(memos));}
@@ -217,7 +227,7 @@ function renderList(){
     details.innerHTML=`
       <div class="detail-grid">
         <div class="photo-box">
-          <span class="detail-label">写真（2枚まで）</span>
+          
           <div class="photo-grid">
             ${[1,2].map(slot=>`
               <div class="photo-slot" data-photo-slot="${slot}">
@@ -229,8 +239,7 @@ function renderList(){
           </div>
         </div>
         <label>
-          <span class="detail-label">メモ</span>
-          <textarea class="memo" placeholder="メモを入力"></textarea>
+          <input class="memo" placeholder="メモを入力" type="text" value="">
           <span class="save-status"></span>
         </label>
         <div class="detail-actions">
@@ -285,40 +294,39 @@ function renderList(){
 
 
 
-function setModalPhoto(blob){
-  if(activePhotoObjectUrl){URL.revokeObjectURL(activePhotoObjectUrl);activePhotoObjectUrl=null;}
-  if(blob){
-    activePhotoObjectUrl=URL.createObjectURL(blob);
-    photoModalImage.src=activePhotoObjectUrl;
-    photoModalImage.classList.add('show');
-    photoModal.classList.add('has-photo');
-  }else{
-    photoModalImage.removeAttribute('src');
-    photoModalImage.classList.remove('show');
+async function updatePhotoModalState(){
+  if(!activePhotoStation||!activePhotoSlot){
     photoModal.classList.remove('has-photo');
+    return false;
+  }
+  try{
+    const blob=await loadPhoto(activePhotoStation.id,activePhotoSlot);
+    photoModal.classList.toggle('has-photo',!!blob);
+    return !!blob;
+  }catch{
+    photoModal.classList.remove('has-photo');
+    return false;
   }
 }
 async function openPhotoModal(station,slot){
   activePhotoStation=station;
   activePhotoSlot=slot;
-  photoModalTitle.textContent=`${station.name}・写真${slot}`;
+  await updatePhotoModalState();
   photoModal.classList.add('show');
   photoModal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
-  try{setModalPhoto(await loadPhoto(station.id,slot));}catch{setModalPhoto(null);}
 }
 function closePhotoModal(){
   photoModal.classList.remove('show','has-photo');
   photoModal.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
-  setModalPhoto(null);
   activePhotoStation=null;
   activePhotoSlot=null;
   photoModalInput.value='';
 }
 async function refreshPhotoModal(){
   if(!activePhotoStation||!activePhotoSlot)return;
-  setModalPhoto(await loadPhoto(activePhotoStation.id,activePhotoSlot));
+  await updatePhotoModalState();
   renderList();
 }
 photoModalClose.addEventListener('click',closePhotoModal);
@@ -331,28 +339,37 @@ photoModalInput.addEventListener('change',async()=>{
     const blob=await resizeImage(file,1200,0.68);
     await savePhoto(activePhotoStation.id,activePhotoSlot,blob);
     await refreshPhotoModal();
-  }catch(err){alert('写真を保存できませんでした。');}
+  }catch(err){
+    console.error(err);
+    alert('写真を保存できませんでした。');
+  }
   photoModalInput.value='';
 });
 async function rotateActivePhoto(direction){
-  if(!activePhotoStation)return;
+  if(!activePhotoStation||!activePhotoSlot)return;
   try{
     const blob=await loadPhoto(activePhotoStation.id,activePhotoSlot);
     if(!blob)return;
     const rotated=await rotateImage(blob,direction);
     await savePhoto(activePhotoStation.id,activePhotoSlot,rotated);
     await refreshPhotoModal();
-  }catch(err){alert('写真を回転できませんでした。');}
+  }catch(err){
+    console.error(err);
+    alert('写真を回転できませんでした。');
+  }
 }
 photoRotateLeft.addEventListener('click',()=>rotateActivePhoto(-90));
 photoRotateRight.addEventListener('click',()=>rotateActivePhoto(90));
 photoModalDelete.addEventListener('click',async()=>{
-  if(!activePhotoStation)return;
+  if(!activePhotoStation||!activePhotoSlot)return;
   if(!confirm('この写真を削除しますか？'))return;
   try{
     await deletePhoto(activePhotoStation.id,activePhotoSlot);
     await refreshPhotoModal();
-  }catch(err){alert('写真を削除できませんでした。');}
+  }catch(err){
+    console.error(err);
+    alert('写真を削除できませんでした。');
+  }
 });
 
 const PHOTO_DB='nagano-gachapins-photos-v1';
