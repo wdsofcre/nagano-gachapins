@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ガチャピンズ">
-  <title>長野版 ガチャピンズラリー v1.0</title>
+  <title>長野版 ガチャピンズラリー v1.1</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
@@ -19,12 +19,11 @@
     .progress{height:10px;background:#edf0f5;border-radius:999px;overflow:hidden;margin-top:10px}.progress>div{height:100%;background:var(--accent);width:0;transition:.25s}
     .tabs{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);display:flex;gap:8px;padding:10px 0}.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 16px;flex:1}.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
     .view{display:none}.view.active{display:block}.panel{padding:14px;margin-top:10px}.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px}.search,.filter{border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;min-width:0}.filter{max-width:145px}
-    #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:393/608;max-width:100%}.map-svg{display:block;width:100%;height:100%;overflow:visible}.map-base{filter:saturate(.5)}.svg-pin{cursor:pointer;outline:none}.svg-pin .pin-shape{fill:var(--accent);stroke:#fff;stroke-width:2.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.svg-pin.done .pin-shape{fill:var(--done)}.svg-pin.selected .pin-shape{stroke:#93c5fd;stroke-width:5}.svg-pin .pin-check{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}.svg-pin:focus-visible .pin-shape{stroke:#111827;stroke-width:4}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup small{display:block;color:var(--muted);margin-top:3px}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}.map-popup-action{border:0;border-radius:8px;padding:7px 9px;margin-top:8px;background:var(--accent);color:white;font-size:13px}.map-note{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}.geocode{display:none;padding:10px;border-radius:12px;background:#fffbeb;color:#92400e;margin-bottom:10px;font-size:13px}.geocode.show{display:block}
-    .station-list{display:grid;gap:8px;margin-top:10px}.station{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px}.station.done{border-color:#bbf7d0;background:#f0fdf4}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.station-meta{font-size:12px;color:var(--muted);margin-top:3px}.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.empty{text-align:center;color:var(--muted);padding:30px}
-    .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:9px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.dot.done{background:var(--done)}.dot.todo{background:var(--accent)}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
+    #map{position:relative;min-height:520px;border-radius:16px;overflow:hidden;background:#edf4ed;display:flex;justify-content:center;align-items:center;padding:12px}.offline-map{position:relative;width:min(100%,420px);aspect-ratio:393/608;max-width:100%}.map-svg{display:block;width:100%;height:100%;overflow:visible}.map-base{filter:saturate(.5)}.svg-pin{cursor:pointer;outline:none}.svg-pin .pin-shape{fill:var(--accent);stroke:#fff;stroke-width:2.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}.svg-pin.done .pin-shape{fill:var(--done)}.svg-pin.selected .pin-shape{stroke:#93c5fd;stroke-width:5}.svg-pin .pin-check{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}.svg-pin:focus-visible .pin-shape{stroke:#111827;stroke-width:4}.map-popup{position:absolute;z-index:20;display:none;width:max-content;max-width:min(240px,72%);border:1px solid var(--line);border-radius:12px;padding:10px 36px 10px 11px;background:#fff;box-shadow:0 5px 18px #0003;text-align:left;--arrow-left:50%}.map-popup.show{display:block}.map-popup::after{content:"";position:absolute;left:var(--arrow-left);width:11px;height:11px;background:#fff;border:solid var(--line);transform:translateX(-50%) rotate(45deg)}.map-popup.above::after{bottom:-6px;border-width:0 1px 1px 0}.map-popup.below::after{top:-6px;border-width:1px 0 0 1px}.map-popup strong{display:block;font-size:15px;line-height:1.3}.map-popup-close{position:absolute;right:5px;top:5px;border:0;background:transparent;border-radius:7px;padding:4px 7px;color:var(--muted)}
+    .station-list{display:grid;gap:8px;margin-top:10px}.station-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.station-card.done{border-color:#bbf7d0;background:#f0fdf4}.station{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:12px}.check{width:25px;height:25px;accent-color:var(--done)}.station-name{font-weight:650}.details-toggle,.map-btn{border:0;border-radius:10px;padding:8px 10px;background:var(--accent2);color:#1d4ed8}.details-toggle{min-width:40px}.station-details{display:none;border-top:1px solid var(--line);padding:12px;background:#fff}.station-card.open .station-details{display:block}.detail-grid{display:grid;gap:12px}.detail-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.memo{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}.photo-box{display:grid;gap:8px}.photo-preview{display:none;width:100%;max-height:240px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#f3f4f6}.photo-preview.show{display:block}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.photo-btn,.photo-delete,.google-btn{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--text);text-decoration:none}.google-btn{background:var(--accent);border-color:var(--accent);color:#fff}.photo-delete{color:var(--danger)}.photo-input{display:none}.save-status{font-size:12px;color:var(--muted);min-height:1em}.empty{text-align:center;color:var(--muted);padding:30px}
+        .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.secondary,.danger{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px}.danger{color:var(--danger)}
     footer{font-size:11px;color:var(--muted);line-height:1.5;padding:20px 2px}a{color:var(--accent)}
-    @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr}.map-btn{grid-column:2}}
+    @media(max-width:540px){.app{padding-left:10px;padding-right:10px}.title{font-size:22px}.metric{padding:11px}.metric strong{font-size:20px}.toolbar{grid-template-columns:1fr}.filter{max-width:none}.station{grid-template-columns:auto 1fr auto}.details-toggle{display:none}.map-btn{padding:8px 9px}.station-name{cursor:pointer}.detail-actions{display:grid}.detail-actions>*{text-align:center}}
   </style>
 </head>
 <body>
@@ -48,8 +47,6 @@
 
   <section id="mapView" class="view active">
     <div class="panel">
-      
-      <div class="legend"><span><i class="dot done"></i>取得済み</span><span><i class="dot todo"></i>未取得</span></div>
       <div id="map">
         <div class="offline-map" id="offlineMap">
           <svg id="mapSvg" class="map-svg" viewBox="0 0 393 608" role="img" aria-label="長野県の簡易地図と道の駅の位置" preserveAspectRatio="xMidYMid meet">
@@ -59,8 +56,6 @@
           <div id="mapPopup" class="map-popup" aria-live="polite">
             <button id="popupClose" class="map-popup-close" type="button" aria-label="閉じる">×</button>
             <strong id="popupName"></strong>
-            <small id="popupMeta"></small>
-            <button id="popupAction" class="map-popup-action" type="button"></button>
           </div>
         </div>
       </div>
@@ -75,8 +70,6 @@
           <option value="all">すべて</option>
           <option value="todo">未取得のみ</option>
           <option value="done">取得済みのみ</option>
-          <option value="kanto">長野（関東）</option>
-          <option value="chubu">長野（中部）</option>
         </select>
       </div>
       <div id="stationList" class="station-list"></div>
@@ -141,7 +134,10 @@ const stations = [
 
 const KEY='nagano-gachapins-v1';
 let checked=JSON.parse(localStorage.getItem(KEY)||'{}');
+const MEMO_KEY='nagano-gachapins-memos-v1';
+let memos=JSON.parse(localStorage.getItem(MEMO_KEY)||'{}');
 let selectedStationId=null;
+let openStationId=null;
 
 const count=document.getElementById('count');
 const percent=document.getElementById('percent');
@@ -155,21 +151,182 @@ const pinLayer=document.getElementById('pinLayer');
 const mapSvg=document.getElementById('mapSvg');
 const mapPopup=document.getElementById('mapPopup');
 const popupName=document.getElementById('popupName');
-const popupMeta=document.getElementById('popupMeta');
-const popupAction=document.getElementById('popupAction');
 const popupClose=document.getElementById('popupClose');
 const resetBtn=document.getElementById('resetBtn');
 const exportBtn=document.getElementById('exportBtn');
 
 function save(){localStorage.setItem(KEY,JSON.stringify(checked));}
+function saveMemos(){localStorage.setItem(MEMO_KEY,JSON.stringify(memos));}
 function updateStats(){const n=stations.filter(s=>checked[s.id]).length,p=Math.round(n/stations.length*100);count.textContent=`${n} / ${stations.length}`;percent.textContent=`${p}%`;remaining.textContent=stations.length-n;bar.style.width=`${p}%`;}
-function regionName(r){return r==='kanto'?'長野（関東）':'長野（中部）'}
 function renderList(){
   const q=search.value.trim().toLowerCase(),f=filter.value;
-  const list=stations.filter(s=>{if(q&&!s.name.toLowerCase().includes(q))return false;if(f==='todo'&&checked[s.id])return false;if(f==='done'&&!checked[s.id])return false;if((f==='kanto'||f==='chubu')&&s.region!==f)return false;return true;});
+  const list=stations.filter(s=>{if(q&&!s.name.toLowerCase().includes(q))return false;if(f==='todo'&&checked[s.id])return false;if(f==='done'&&!checked[s.id])return false;return true;});
   stationList.innerHTML='';
   if(!list.length){stationList.innerHTML='<div class="empty">該当する道の駅はありません</div>';return;}
-  list.forEach(s=>{const row=document.createElement('div');row.className='station'+(checked[s.id]?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.className='check';cb.checked=!!checked[s.id];cb.setAttribute('aria-label',s.name+'を取得済みにする');cb.addEventListener('change',()=>{checked[s.id]=cb.checked;save();updateStats();renderList();renderPins();});const text=document.createElement('div');text.innerHTML=`<div class="station-name">${s.name}</div><div class="station-meta">${regionName(s.region)}</div>`;const btn=document.createElement('button');btn.className='map-btn';btn.textContent='地図';btn.addEventListener('click',()=>showStation(s));row.append(cb,text,btn);stationList.appendChild(row);});
+  list.forEach(s=>{
+    const card=document.createElement('div');
+    card.className='station-card'+(checked[s.id]?' done':'')+(openStationId===s.id?' open':'');
+
+    const row=document.createElement('div');
+    row.className='station';
+
+    const cb=document.createElement('input');
+    cb.type='checkbox';
+    cb.className='check';
+    cb.checked=!!checked[s.id];
+    cb.setAttribute('aria-label',s.name+'を取得済みにする');
+    cb.addEventListener('change',e=>{e.stopPropagation();checked[s.id]=cb.checked;save();updateStats();renderList();renderPins();});
+
+    const text=document.createElement('div');
+    text.className='station-name';
+    text.textContent=s.name;
+    text.setAttribute('role','button');
+    text.setAttribute('tabindex','0');
+    const toggleDetails=()=>{openStationId=openStationId===s.id?null:s.id;renderList();};
+    text.addEventListener('click',toggleDetails);
+    text.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleDetails();}});
+
+    const detailBtn=document.createElement('button');
+    detailBtn.type='button';
+    detailBtn.className='details-toggle';
+    detailBtn.textContent=openStationId===s.id?'▲':'▼';
+    detailBtn.setAttribute('aria-label',s.name+'の詳細を'+(openStationId===s.id?'閉じる':'開く'));
+    detailBtn.addEventListener('click',toggleDetails);
+
+    const mapBtn=document.createElement('button');
+    mapBtn.type='button';
+    mapBtn.className='map-btn';
+    mapBtn.textContent='地図';
+    mapBtn.addEventListener('click',()=>showStation(s));
+
+    row.append(cb,text,detailBtn,mapBtn);
+
+    const details=document.createElement('div');
+    details.className='station-details';
+    details.innerHTML=`
+      <div class="detail-grid">
+        <div class="photo-box">
+          <span class="detail-label">写真</span>
+          <img class="photo-preview" alt="${s.name}の登録写真">
+          <div class="detail-actions">
+            <label class="photo-btn">写真を追加・変更<input class="photo-input" type="file" accept="image/*"></label>
+            <button class="photo-delete" type="button">写真を削除</button>
+          </div>
+        </div>
+        <label>
+          <span class="detail-label">メモ</span>
+          <textarea class="memo" placeholder="メモを入力"></textarea>
+          <span class="save-status"></span>
+        </label>
+        <div class="detail-actions">
+          <a class="google-btn" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
+        </div>
+      </div>`;
+
+    const memo=details.querySelector('.memo');
+    const saveStatus=details.querySelector('.save-status');
+    memo.value=memos[s.id]||'';
+    let memoTimer;
+    memo.addEventListener('input',()=>{
+      memos[s.id]=memo.value;
+      saveMemos();
+      saveStatus.textContent='保存しました';
+      clearTimeout(memoTimer);
+      memoTimer=setTimeout(()=>saveStatus.textContent='',1200);
+    });
+
+    const google=details.querySelector('.google-btn');
+    google.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('道の駅 '+s.name+' 長野県');
+
+    const preview=details.querySelector('.photo-preview');
+    const photoInput=details.querySelector('.photo-input');
+    const photoDelete=details.querySelector('.photo-delete');
+
+    loadPhoto(s.id).then(blob=>{
+      if(blob){
+        const url=URL.createObjectURL(blob);
+        preview.src=url;
+        preview.classList.add('show');
+        preview.dataset.objectUrl=url;
+        photoDelete.hidden=false;
+      }else{
+        photoDelete.hidden=true;
+      }
+    }).catch(()=>{photoDelete.hidden=true;});
+
+    photoInput.addEventListener('change',async()=>{
+      const file=photoInput.files&&photoInput.files[0];
+      if(!file)return;
+      try{
+        const blob=await resizeImage(file,1600,0.82);
+        await savePhoto(s.id,blob);
+        if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);
+        const url=URL.createObjectURL(blob);
+        preview.src=url;
+        preview.dataset.objectUrl=url;
+        preview.classList.add('show');
+        photoDelete.hidden=false;
+      }catch(err){alert('写真を保存できませんでした。');}
+      photoInput.value='';
+    });
+
+    photoDelete.addEventListener('click',async()=>{
+      if(!confirm('この写真を削除しますか？'))return;
+      await deletePhoto(s.id);
+      if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);
+      preview.removeAttribute('src');
+      preview.classList.remove('show');
+      photoDelete.hidden=true;
+    });
+
+    card.append(row,details);
+    stationList.appendChild(card);
+  });
+}
+
+
+const PHOTO_DB='nagano-gachapins-photos-v1';
+function openPhotoDB(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open(PHOTO_DB,1);
+    req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains('photos'))req.result.createObjectStore('photos');};
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function savePhoto(id,blob){
+  const db=await openPhotoDB();
+  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').put(blob,String(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
+  db.close();
+}
+async function loadPhoto(id){
+  const db=await openPhotoDB();
+  const value=await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readonly');const req=tx.objectStore('photos').get(String(id));req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});
+  db.close();
+  return value;
+}
+async function deletePhoto(id){
+  const db=await openPhotoDB();
+  await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(String(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});
+  db.close();
+}
+function resizeImage(file,maxSize=1600,quality=.82){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    const url=URL.createObjectURL(file);
+    img.onload=()=>{
+      try{
+        const scale=Math.min(1,maxSize/Math.max(img.naturalWidth,img.naturalHeight));
+        const w=Math.max(1,Math.round(img.naturalWidth*scale));
+        const h=Math.max(1,Math.round(img.naturalHeight*scale));
+        const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        canvas.toBlob(blob=>{URL.revokeObjectURL(url);blob?resolve(blob):reject(new Error('画像変換に失敗'));},'image/jpeg',quality);
+      }catch(e){URL.revokeObjectURL(url);reject(e);}
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('画像を読み込めません'));};
+    img.src=url;
+  });
 }
 
 function closeStationCard(){selectedStationId=null;mapPopup.classList.remove('show','above','below');renderPins();}
@@ -198,9 +355,6 @@ function positionPopup(stationId){
 function showStationCard(s){
   selectedStationId=s.id;
   popupName.textContent=s.name;
-  popupMeta.textContent=`${regionName(s.region)}・${checked[s.id]?'取得済み':'未取得'}`;
-  popupAction.textContent=checked[s.id]?'未取得に戻す':'取得済みにする';
-  popupAction.onclick=e=>{e.stopPropagation();checked[s.id]=!checked[s.id];save();updateStats();renderList();showStationCard(s);};
   mapPopup.classList.remove('above','below');
   mapPopup.classList.add('show');
   renderPins();
@@ -220,7 +374,7 @@ function renderPins(){
     pin.setAttribute('transform',`translate(${x} ${y}) scale(.82)`);
     pin.setAttribute('role','button');
     pin.setAttribute('tabindex','0');
-    pin.setAttribute('aria-label',`${s.name}、${checked[s.id]?'取得済み':'未取得'}`);
+    pin.setAttribute('aria-label',s.name);
 
     const shape=document.createElementNS(NS,'path');
     shape.setAttribute('class','pin-shape');
@@ -255,7 +409,7 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
 }));
 window.addEventListener('resize',()=>{if(selectedStationId)requestAnimationFrame(()=>positionPopup(selectedStationId));});offlineMap.addEventListener('click',closeStationCard);mapPopup.addEventListener('click',e=>e.stopPropagation());popupClose.addEventListener('click',closeStationCard);search.addEventListener('input',renderList);filter.addEventListener('change',renderList);
 resetBtn.addEventListener('click',()=>{if(confirm('取得済みチェックをすべて消しますか？')){checked={};save();updateStats();renderList();renderPins();}});
-exportBtn.addEventListener('click',()=>{const data={exportedAt:new Date().toISOString(),checked};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nagano-gachapins-backup.json';a.click();URL.revokeObjectURL(a.href);});
+exportBtn.addEventListener('click',()=>{const data={exportedAt:new Date().toISOString(),checked,memos};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nagano-gachapins-backup.json';a.click();URL.revokeObjectURL(a.href);});
 updateStats();renderList();renderPins();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
